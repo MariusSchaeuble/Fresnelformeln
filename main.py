@@ -26,7 +26,8 @@ tex_fonts = {
     "xtick.labelsize": 20,
     "ytick.labelsize": 20
 }
-
+matplotlib.rc('xtick', labelsize=20)
+matplotlib.rc('ytick', labelsize=20)
 
 
 
@@ -117,12 +118,12 @@ for i in range(len(U)):
     sigma_temp1 = 0.01 + 0.008*U[i]
     sigma_U[i] = gauss("(temp1 - U_dunkel)/I0_p")
 
-alpha = toArray(W_p_refl[:, 1])
+alpha = toArray(W_p_refl[:, 0])
 sigma_alpha = ones(len(alpha))*0.25
 
 def fres(alpha1):
     alpha1 = alpha1*pi/180
-    beta = arcsin(sin(alpha1)*n2)
+    beta = arcsin(sin(alpha1)/n2)
     if alpha1 + beta == 0:
         return 0
     else:
@@ -130,10 +131,11 @@ def fres(alpha1):
 
 
 errorbar(alpha, U, sigma_U, sigma_alpha,'x', label='Gemessenes Spannungsverhältnis')
-plot(alpha, np.vectorize(fres(alpha)), label="Theoriekurve")
-xlabel('Einfallswinkel in °', fontsize=20)
-ylabel('Reflexionsgrad', fontsize=20)
+plot(alpha, np.vectorize(fres)(alpha), label="Theoriekurve")
+xlabel('Einfallswinkel in °, p polarisiert', fontsize=20)
+ylabel('Reflexionsvermögen', fontsize=20)
 legend(fontsize=20)
+grid()
 plt.tight_layout()
 savefig('pr.png')
 show()
@@ -170,6 +172,34 @@ W_p_trans = matrix("""
 """)
 
 
+U = toArray(W_p_trans[:, 1])
+sigma_U = ones(len(U))
+for i in range(len(U)):
+    U[i] = (U[i] - U_dunkel)/I0_p
+    temp1 = U[i]
+    sigma_temp1 = 0.01 + 0.008*U[i]
+    sigma_U[i] = gauss("(temp1 - U_dunkel)/I0_p")
+
+alpha = toArray(W_p_trans[:, 0])
+sigma_alpha = ones(len(alpha))*0.25
+
+def fres(alpha1):
+    alpha1 = alpha1*pi/180
+    beta = arcsin(sin(alpha1)/n2)
+    return (2*sin(beta)*cos(alpha1)/(sin(alpha1 + beta)*cos(alpha1 - beta)))**2*n2*cos(beta)/cos(alpha1)
+
+
+errorbar(alpha, U, sigma_U, sigma_alpha,'x', label='Gemessenes Spannungsverhältnis')
+plot(alpha, np.vectorize(fres)(alpha), label="Theoriekurve")
+xlabel('Einfallswinkelswinkel in °, p polarisiert', fontsize=20)
+ylabel('Transmissionsvermögen', fontsize=20)
+legend(fontsize=20)
+grid()
+plt.tight_layout()
+savefig('pt.png')
+show()
+
+
 W_s_refl = matrix("""
 10 0.44;
 15 0.45;
@@ -194,6 +224,33 @@ W_s_refl = matrix("""
 86 12.20;
 87 11.27
 """)
+
+U = toArray(W_s_refl[:, 1])
+sigma_U = ones(len(U))
+for i in range(len(U)):
+    U[i] = (U[i] - U_dunkel)/I0_p
+    temp1 = U[i]
+    sigma_temp1 = 0.01 + 0.008*U[i]
+    sigma_U[i] = gauss("(temp1 - U_dunkel)/I0_p")
+
+alpha = toArray(W_s_refl[:, 0])
+sigma_alpha = ones(len(alpha))*0.25
+
+def fres(alpha1):
+    alpha1 = alpha1*pi/180
+    beta = arcsin(sin(alpha1)/n2)
+    return (sin(alpha1 - beta)/sin(alpha1 + beta))**2
+
+
+errorbar(alpha, U, sigma_U, sigma_alpha,'x', label='Gemessenes Spannungsverhältnis')
+plot(alpha, np.vectorize(fres)(alpha), label="Theoriekurve")
+xlabel('Einfallswinkel in °, s polarisiert', fontsize=20)
+ylabel('Reflexionsvermögen', fontsize=20)
+legend(fontsize=15)
+grid()
+plt.tight_layout()
+savefig('sr.png')
+show()
 
 W_s_trans = matrix("""
 10 09.77;
@@ -220,6 +277,33 @@ W_s_trans = matrix("""
 87 0.58
 """)
 
+
+U = toArray(W_s_trans[:, 1])
+sigma_U = ones(len(U))
+for i in range(len(U)):
+    U[i] = (U[i] - U_dunkel)/I0_p
+    temp1 = U[i]
+    sigma_temp1 = 0.01 + 0.008*U[i]
+    sigma_U[i] = gauss("(temp1 - U_dunkel)/I0_p")
+
+alpha = toArray(W_s_trans[:, 0])
+sigma_alpha = ones(len(alpha))*0.25
+
+def fres(alpha1):
+    alpha1 = alpha1*pi/180
+    beta = arcsin(sin(alpha1)/n2)
+    return (2*sin(beta)*cos(alpha1)/(sin(alpha1 + beta)))**2*n2*cos(beta)/cos(alpha1)
+
+
+errorbar(alpha, U, sigma_U, sigma_alpha,'x', label='Gemessenes Spannungsverhältnis')
+plot(alpha, np.vectorize(fres)(alpha), label="Theoriekurve")
+xlabel('Einfallswinkelswinkel in °, s polarisiert', fontsize=20)
+ylabel('Transmissionsvermögen', fontsize=20)
+legend(fontsize=15)
+grid()
+plt.tight_layout()
+savefig('st.png')
+show()
 
 
 

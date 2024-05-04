@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../Beugung3/.idea/Beugung3.iml" filepath="$PROJECT_DIR$/../Beugung3/.idea/Beugung3.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Fresnelformeln.iml" filepath="$PROJECT_DIR$/.idea/Fresnelformeln.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Grundpraktikum/.idea/Grundpraktikum.iml" filepath="$PROJECT_DIR$/../Grundpraktikum/.idea/Grundpraktikum.iml" />
     </modules>
