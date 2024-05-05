@@ -305,5 +305,7 @@ plt.tight_layout()
 savefig('st.png')
 show()
 
-
-
+latexTable(UC(W_p_refl[:, 0], '^\\circ'), UC(W_p_refl[:, 1], 'V'))
+latexTable(UC(W_p_trans[:, 0], '^\\circ'), UC(W_p_trans[:, 1], 'V'))
+latexTable(UC(W_s_refl[:, 0], '^\\circ'), UC(W_s_refl[:, 1], 'V'))
+latexTable(UC(W_s_trans[:, 0], '^\\circ'), UC(W_s_trans[:, 1], 'V'))
