@@ -186,7 +186,10 @@ sigma_alpha = ones(len(alpha))*0.25
 def fres(alpha1):
     alpha1 = alpha1*pi/180
     beta = arcsin(sin(alpha1)/n2)
-    return (2*sin(beta)*cos(alpha1)/(sin(alpha1 + beta)*cos(alpha1 - beta)))**2*n2*cos(beta)/cos(alpha1)
+    T1 = (2*sin(beta)*cos(alpha1)/(sin(alpha1 + beta)*cos(alpha1 - beta)))**2
+    T2 = (2*sin(alpha1)*cos(beta)/(sin(beta + alpha1)*cos(beta - alpha1)))**2
+    return T1*T2
+    #return (2*sin(beta)*cos(alpha1)/(sin(alpha1 + beta)*cos(alpha1 - beta)))**2*n2*cos(beta)/cos(alpha1)
 
 
 errorbar(alpha, U, sigma_U, sigma_alpha,'x', label='Gemessenes Spannungsverhältnis')
@@ -292,7 +295,10 @@ sigma_alpha = ones(len(alpha))*0.25
 def fres(alpha1):
     alpha1 = alpha1*pi/180
     beta = arcsin(sin(alpha1)/n2)
-    return (2*sin(beta)*cos(alpha1)/(sin(alpha1 + beta)))**2*n2*cos(beta)/cos(alpha1)
+    T1 = (2*sin(beta)*cos(alpha1)/(sin(alpha1 + beta)))**2
+    T2 = (2*sin(alpha1)*cos(beta)/(sin(beta + alpha1)))**2
+    return T1*T2
+    #return (2*sin(beta)*cos(alpha1)/(sin(alpha1 + beta)))**2*n2*cos(beta)/cos(alpha1)
 
 
 errorbar(alpha, U, sigma_U, sigma_alpha,'x', label='Gemessenes Spannungsverhältnis')

@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="489c4cf4-254b-4f08-b9ea-7c90a438e796" name="Changes" comment="fertig, drucke messwerte alstable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,9 +62,6 @@
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -121,6 +119,7 @@
       <workItem from="1714806298484" duration="4561000" />
       <workItem from="1714924601035" duration="511000" />
       <workItem from="1715967873091" duration="63000" />
+      <workItem from="1717429981550" duration="3449000" />
     </task>
     <task id="LOCAL-00001" summary="auswertung fertig samstag">
       <option name="closed" value="true" />
